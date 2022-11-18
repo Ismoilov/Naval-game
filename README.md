@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+# Simplified naval combat using react
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+0. Components must be implemented on classes, no hooks!
 
-## Available Scripts
+1. There should be a button to start a new game. Those. at any time you can reset the game and start again
 
-In the project directory, you can run:
+2. Players (Player1 Player2) take turns making their moves (in hotseat mode).
 
-### `npm start`
+3. There should be information about which player is currently playing
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. The size of the playing field is 5x5 cells
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+5. Ships are only single-deck, can be located on adjacent cells
 
-### `npm test`
+6. The game consists of three stages 1) Arrangement of ships 2) Game 3) Announcement of the winner
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1) Arrangement of ships:
 
-### `npm run build`
+* Users take turns placing ships. That is, one playing field is displayed (first Player1, then Player2)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Each player must have 8 ships
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*Click on a cell = add ship cell, click again = clear the cell
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* To complete the placement, you must click on the 'Confirm' button, after which the placement of the next player's ships will begin
 
-### `npm run eject`
+* After completing the placement of Player2, the Game phase begins
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2) Game:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Before the start of each new turn, the following is displayed: the name of the current player and the 'start move' button (the playing fields are not displayed!)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* During the turn, the player sees his field and the field of the enemy, but does not see the location of enemy ships (only attacked cells are shown)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* The user selects one cell on the opponent's field (click - select, re-click - cancel) and press 'Attack'
 
-## Learn More
+* If the user hit / did not hit the cell with an enemy ship - the message 'Killed' / 'Missed' is displayed and the cell of the enemy field is updated
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* The user makes an attack until the first miss, after which the attack becomes unavailable
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* If an attack is no longer available (the last one ended in a miss), a 'end turn' button appears
+
+3) Announcement of the winner:
+
+* The player who has no 'living' ships left loses
+
+* Displays the name of the winner and two playing fields
+
+
