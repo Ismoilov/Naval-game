@@ -19,7 +19,7 @@ class Playground extends Component<PlaygroundProps> {
         data.splice(data.indexOf(id), 1);
         e.currentTarget.classList.remove('active');
       } else {
-        if (data.length > 7) {
+        if (data.length > 7) {          
           alert('You can only select 8 ships');
           return;
         }

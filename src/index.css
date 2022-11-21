@@ -36,6 +36,14 @@ code {
   background-color: greenyellow;
 }
 
+.square.killed {
+  background-color: rgb(10, 238, 10);
+}
+
+.square.missed {
+  background-color: red;
+}
+
 .playground-wrapper {
   display: flex;
   justify-content: center;

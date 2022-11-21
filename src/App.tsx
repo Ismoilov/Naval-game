@@ -42,7 +42,7 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <h2>Naval Game</h2>
+        <h2>Naval Combat</h2>
         <NavigationTop start={this.startHandler} reset={this.resetHandler} player={player} started={started} />
         {started && (
           <div className="playground-wrapper">
