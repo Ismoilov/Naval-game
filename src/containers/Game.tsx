@@ -1,5 +1,7 @@
 import { Component, ReactNode } from 'react';
 
+import GameCells from '../components/GameCells'
+
 type GameProps = {
   player: string;
   firstPlayerData: Array<string>
@@ -46,8 +48,8 @@ class Game extends Component<GameProps, GameState> {
     }
   }
 
-  attackHandler = (e: React.MouseEvent<HTMLElement>) => {
-    const elements = document.querySelectorAll<HTMLElement>('.square.active');
+  attackHandler = () => {
+    const elements = document.querySelectorAll<HTMLElement>(`.player-${this.props.player === '1' ? '2' : '1'} .square.active`);
 
     if (this.props.player === '1') {
       this.setState({ selectedField: '' });
@@ -108,84 +110,17 @@ class Game extends Component<GameProps, GameState> {
 
   render(): ReactNode {
     const { selectedField, ended, firstPlayerPoint, secondPlayerPoint } = this.state;
+    const { player } = this.props;
     return (
       <>
         <div className="playground-wrapper">
-          <div>
-            <h5>Point: {firstPlayerPoint}</h5>
-            <div className="row">
-              <div className={`square`} data-id='1-1' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='1-2' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='1-3' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='1-4' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='1-5' onClick={(e) => this.clickHandler(e, '1')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='2-1' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='2-2' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='2-3' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='2-4' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='2-5' onClick={(e) => this.clickHandler(e, '1')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='3-1' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='3-2' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='3-3' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='3-4' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='3-5' onClick={(e) => this.clickHandler(e, '1')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='4-1' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='4-2' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='4-3' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='4-4' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='4-5' onClick={(e) => this.clickHandler(e, '1')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='5-1' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='5-2' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='5-3' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='5-4' onClick={(e) => this.clickHandler(e, '1')} />
-              <div className={`square`} data-id='5-5' onClick={(e) => this.clickHandler(e, '1')} />
-            </div>
+          <div className={`${player === '1' ? 'passive' : ''}`}>
+            <h5>Player 1's Point: {firstPlayerPoint}</h5>
+            <GameCells clickHandler={this.clickHandler} player='1' />
           </div>
-          <div>
-            <h5>Point: {secondPlayerPoint}</h5>
-            <div className="row">
-              <div className={`square`} data-id='1-1' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='1-2' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='1-3' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='1-4' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='1-5' onClick={(e) => this.clickHandler(e, '2')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='2-1' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='2-2' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='2-3' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='2-4' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='2-5' onClick={(e) => this.clickHandler(e, '2')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='3-1' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='3-2' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='3-3' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='3-4' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='3-5' onClick={(e) => this.clickHandler(e, '2')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='4-1' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='4-2' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='4-3' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='4-4' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='4-5' onClick={(e) => this.clickHandler(e, '2')} />
-            </div>
-            <div className="row">
-              <div className={`square`} data-id='5-1' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='5-2' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='5-3' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='5-4' onClick={(e) => this.clickHandler(e, '2')} />
-              <div className={`square`} data-id='5-5' onClick={(e) => this.clickHandler(e, '2')} />
-            </div>
+          <div className={`${player === '2' ? 'passive' : ''}`}>
+            <h5>Player 2's Point: {secondPlayerPoint}</h5>
+            <GameCells clickHandler={this.clickHandler} player='2' />
           </div>
         </div>
         {selectedField !== '' && <button className='btn btn-warning mt-20' onClick={this.attackHandler}>Attack</button>}

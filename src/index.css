@@ -30,6 +30,7 @@ code {
   font-size: 30px;
   line-height: 50px;
   text-align: center;
+  cursor: pointer;
 }
 
 .square.active {
@@ -51,10 +52,9 @@ code {
 }
 
 .btns-wrapper {
-  /* padding: 20px 0; */
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; 
 }
 
 .btn {
@@ -92,4 +92,43 @@ code {
 
 .mt-20 {
   margin-top: 20px;
+}
+
+.player {
+  display: inline-block;
+  background-color: yellow;
+  padding: 10px 20px;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.079) 0px 5px 15px;
+  animation: colorchange 3s linear 0s infinite;
+}
+
+.passive {
+  opacity: .3;
+}
+
+.passive .square{
+  cursor: not-allowed;
+}
+
+@keyframes colorchange {
+  0% {
+    background: white;
+  }
+
+  33% {
+    background: rgba(255, 255, 0, 0.866)
+  }
+
+  50% {
+    background: yellow
+  }
+
+  66% {
+    background: rgba(255, 255, 0, 0.866)
+  }
+
+  100% {
+    background: white
+  }
 }

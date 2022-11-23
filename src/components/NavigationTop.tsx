@@ -16,7 +16,7 @@ class NavigationTop extends Component<Props> {
           <button className="btn btn-success" onClick={this.props.start}>Start</button>
           <button className="btn btn-danger" onClick={this.props.reset}>Reset</button>
         </div>
-        {started && <h4>Player {player} is playing</h4>}
+        {started && <h4 className="player">Player {player} is playing</h4>}
       </>
     );
   }
