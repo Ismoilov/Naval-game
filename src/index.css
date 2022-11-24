@@ -39,10 +39,12 @@ code {
 
 .square.killed {
   background-color: rgb(10, 238, 10);
+  pointer-events: none;
 }
 
 .square.missed {
   background-color: red;
+  pointer-events: none;
 }
 
 .playground-wrapper {
